@@ -9,12 +9,30 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: Constants.statusBarHeight
   },
+  header: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    backgroundColor: '#1f1f1f',
+    borderRadius: 100,
+    marginRight: 8,
+    flex: 1,
+  },
+  search: {
+    flex: 1,
+    color: '#8f8f8f'
+  },
   title: {
     fontSize: 24,
     lineHeight: 32,
     fontStyle: 'normal',
     fontWeight: 'bold',
-    marginVertical: 16,
+    marginTop: 40,
+    marginBottom: 16,
     color: '#e9e9e9'
   },
   pessoasContainer: {
@@ -56,6 +74,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
     padding: 12,
     borderRadius: 100,
+    backgroundColor: '#1f1f1f',
     justifyContent: 'center',
     alignItems: 'center',
   },
