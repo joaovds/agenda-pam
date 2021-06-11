@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Text, FlatList, Alert, TextInput } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  Alert,
+  TextInput,
+  ScrollView,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
@@ -96,8 +103,11 @@ const Home: React.FC = () => {
           />
         </View>
 
-        <RectButton style={styles.buttonAction}>
-          <Feather name="user-plus" size={24} color="#4d4d4d" />
+        <RectButton
+          style={{ ...styles.buttonAction, borderWidth: 1 }}
+          onPress={() => navigation.navigate('FormPeople')}
+        >
+          <Feather name="user-plus" size={24} color="#8f8f8f" />
         </RectButton>
       </View>
 
@@ -121,14 +131,14 @@ const Home: React.FC = () => {
               </View>
               <View style={styles.actions}>
                 <RectButton style={styles.buttonAction}>
-                  <Feather name="edit" size={20} color="#404040" />
+                  <Feather name="edit" size={20} color="#4d4d4d" />
                 </RectButton>
 
                 <RectButton
                   style={styles.buttonAction}
                   onPress={() => handleDelete()}
                 >
-                  <Feather name="delete" size={20} color="#793636" />
+                  <Feather name="delete" size={20} color="#8f4040" />
                 </RectButton>
               </View>
             </View>

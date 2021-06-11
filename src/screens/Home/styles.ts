@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     fontStyle: 'normal',
     fontWeight: 'bold',
-    color: '#8f8f8f',
+    color: '#a8a8a8',
   },
   curso: {
     marginTop:4,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     fontStyle: 'normal',
     fontWeight: '400',
-    color: '#4d4d4d'
+    color: '#8f8f8f'
   },
   actions: {
     flexDirection: 'row',
