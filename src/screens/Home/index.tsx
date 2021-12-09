@@ -3,62 +3,69 @@ import {
   View,
   Text,
   FlatList,
-  Alert,
-  TextInput,
-  ScrollView,
+  Alert
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { RectButton } from 'react-native-gesture-handler';
-import { Feather } from '@expo/vector-icons';
+import { Feather as Icon } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
 
-const pessoasFake = [
+const contatosFake = [
   {
     id: 1,
-    nome: 'Nome Qualquer 1 Nome Qualquer 1 Nome Qualquer 1',
-    curso: 'Nome de um curso Nome de um curso',
+    nome: 'João Victor',
+    email: 'joao@email.com',
+    telefone: '998263749'
   },
   {
     id: 2,
     nome: 'Nome Qualquer 2',
-    curso: 'Nome de um curso',
+    email: 'email@email.com',
+    telefone: '998263749'
   },
   {
     id: 3,
     nome: 'Nome Qualquer 3',
-    curso: 'Nome de um curso',
+    email: 'email@email.com',
+    telefone: '998263749'
   },
   {
     id: 4,
     nome: 'Nome Qualquer 4',
-    curso: 'Nome de um curso',
+    email: 'email@email.com',
+    telefone: '998263749'
   },
   {
     id: 5,
     nome: 'Nome Qualquer 5',
-    curso: 'Nome de um curso',
+    email: 'email@email.com',
+    telefone: '998263749'
   },
   {
     id: 6,
     nome: 'Nome Qualquer 6',
-    curso: 'Nome de um curso',
+    email: 'email@email.com',
+    telefone: '998263749'
   },
   {
     id: 7,
     nome: 'Nome Qualquer 7',
-    curso: 'Nome de um curso',
+    email: 'email@email.com',
+    telefone: '998263749'
   },
   {
     id: 8,
     nome: 'Nome Qualquer 8',
-    curso: 'Nome de um curso',
+    email: 'email@email.com',
+    telefone: '998263749'
   },
   {
     id: 9,
     nome: 'Nome Qualquer 9',
-    curso: 'Nome de um curso',
+    email: 'email@email.com',
+    telefone: '998263749'
   },
 ];
 
@@ -68,7 +75,7 @@ const Home: React.FC = () => {
   const handleDelete = () => {
     Alert.alert(
       'Confirmação',
-      'Deseja mesmo deletar este registro?',
+      'Deseja mesmo deletar este contato?',
       [
         {
           text: 'Cancelar',
@@ -86,59 +93,38 @@ const Home: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.searchContainer}>
-          <Feather
-            name="search"
-            size={24}
-            color="#404040"
-            style={{ padding: 12, marginLeft: 4 }}
-          />
-
-          <TextInput
-            style={styles.search}
-            placeholder="Digite o ID do usuário"
-            placeholderTextColor="#333333"
-            keyboardType="numeric"
-          />
-        </View>
-
-        <RectButton
-          style={{ ...styles.buttonAction, borderWidth: 1 }}
-          onPress={() => navigation.navigate('FormPeople')}
-        >
-          <Feather name="user-plus" size={24} color="#8f8f8f" />
-        </RectButton>
-      </View>
-
       <View>
-        <Text style={styles.title}>Pessoas cadastradas</Text>
+        <Text style={styles.title}>Contatos</Text>
       </View>
 
-      <View style={styles.pessoasContainer}>
+      <View style={styles.contatosContainer}>
         <FlatList
-          data={pessoasFake}
+          data={contatosFake}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
-            <View style={styles.pessoaCard}>
+            <View style={styles.contatoCard}>
               <View style={{ flex: 1, paddingRight: 4 }}>
                 <Text style={styles.nome} numberOfLines={1}>
                   {item.nome}
                 </Text>
-                <Text style={styles.curso} numberOfLines={1}>
-                  {item.curso}
+                <Text style={styles.telefone} numberOfLines={1}>
+                  {item.telefone}
+                </Text>
+                <Text style={styles.email} numberOfLines={1}>
+                  {item.email}
                 </Text>
               </View>
+
               <View style={styles.actions}>
                 <RectButton style={styles.buttonAction}>
-                  <Feather name="edit" size={20} color="#4d4d4d" />
+                  <Icon name="edit" size={20} color="#4d4d4d" />
                 </RectButton>
 
                 <RectButton
                   style={styles.buttonAction}
                   onPress={() => handleDelete()}
                 >
-                  <Feather name="delete" size={20} color="#8f4040" />
+                  <Icon name="delete" size={20} color="#8f4040" />
                 </RectButton>
               </View>
             </View>
@@ -146,6 +132,10 @@ const Home: React.FC = () => {
           showsVerticalScrollIndicator={false}
         />
       </View>
+
+      <RectButton style={styles.fab} onPress={() => navigation.navigate('FormContact')}>
+        <Icon name="plus" size={28} color="#f9f9f9" />
+      </RectButton>
     </SafeAreaView>
   );
 };

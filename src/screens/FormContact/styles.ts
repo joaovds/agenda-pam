@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 20,
   },
+
   header: {
     width: '100%',
     flexDirection: 'row',
@@ -15,22 +16,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 16,
   },
+
   form: {
     flex: 1,
     width: '100%',
     alignItems: 'center',
     paddingTop: 16,
   },
+
   title: {
     fontSize: 24,
     fontStyle: 'normal',
     fontWeight: 'bold',
     color: '#e9e9e9',
   },
+
   inputContainer: {
     width: '100%',
     marginTop: 20,
   },
+
   label: {
     fontSize: 14,
     fontStyle: 'normal',
@@ -38,6 +43,7 @@ const styles = StyleSheet.create({
     color: '#a8a8a8',
     marginBottom: 4,
   },
+
   input: {
     backgroundColor: '#1a1a1a',
     padding: 16,
@@ -48,14 +54,16 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     color: '#d9d9d9',
   },
+
   button: {
     width: '100%',
     alignItems: 'center',
-    backgroundColor: '#F9A826',
+    backgroundColor: '#1e3e95',
     padding: 16,
     borderRadius: 8,
     marginTop: 40,
   },
+
   buttonText: {
     fontSize: 18,
     fontStyle: 'normal',

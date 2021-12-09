@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from './screens/Home';
-import FormPeople from './screens/FormPeople';
+import FormContact from './screens/FormContact';
 
 const AppStack = createStackNavigator();
 
@@ -19,7 +19,7 @@ const Routes = () => {
         }}
       >
         <AppStack.Screen name="Home" component={Home} />
-        <AppStack.Screen name="FormPeople" component={FormPeople} />
+        <AppStack.Screen name="FormContact" component={FormContact} />
       </AppStack.Navigator>
     </NavigationContainer>
   );

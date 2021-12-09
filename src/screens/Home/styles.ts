@@ -9,45 +9,33 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: Constants.statusBarHeight
   },
-  header: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  searchContainer: {
-    flexDirection: 'row',
-    backgroundColor: '#1f1f1f',
-    borderRadius: 100,
-    marginRight: 8,
-    flex: 1,
-  },
-  search: {
-    flex: 1,
-    color: '#8f8f8f'
-  },
+
   title: {
     fontSize: 24,
     lineHeight: 32,
     fontStyle: 'normal',
     fontWeight: 'bold',
-    marginTop: 40,
     marginBottom: 16,
     color: '#e9e9e9'
   },
-  pessoasContainer: {
+
+  contatosContainer: {
     flex: 1,
     width: '100%',
   },
-  pessoaCard: {
+
+  contatoCard: {
     flex: 1,
     justifyContent: 'space-between',
     backgroundColor: '#1a1a1a',
     borderRadius: 8,
     marginVertical: 8,
     padding: 12,
+
     flexDirection: 'row',
+    alignItems: 'center'
   },
+
   nome: {
     fontSize: 16,
     lineHeight: 24,
@@ -55,14 +43,25 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#a8a8a8',
   },
-  curso: {
-    marginTop:4,
+
+  telefone: {
+    marginTop: 4,
+    fontSize: 16,
+    lineHeight: 20,
+    fontStyle: 'normal',
+    fontWeight: '400',
+    color: '#8f8f8f'
+  },
+
+  email: {
+    marginTop: 4,
     fontSize: 14,
     lineHeight: 20,
     fontStyle: 'normal',
     fontWeight: '400',
     color: '#8f8f8f'
   },
+
   actions: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -70,6 +69,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1f1f1f',
     borderRadius: 100
   },
+
   buttonAction: {
     marginHorizontal: 8,
     padding: 12,
@@ -78,6 +78,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  fab: {
+    position: 'absolute',
+    right: 20,
+    bottom: 24,
+    width: 64,
+    height: 64,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    borderRadius: 1000,
+    backgroundColor: '#1e3e95',
+  }
 });
 
 export default styles;
