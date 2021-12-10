@@ -1,76 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
-  FlatList,
   Alert
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { RectButton } from 'react-native-gesture-handler';
+import { RectButton, ScrollView } from 'react-native-gesture-handler';
 import { Feather as Icon } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+import firebase from '../../config/firebaseConnection';
+
 import styles from './styles';
 
-const contatosFake = [
-  {
-    id: 1,
-    nome: 'João Victor',
-    email: 'joao@email.com',
-    telefone: '998263749'
-  },
-  {
-    id: 2,
-    nome: 'Nome Qualquer 2',
-    email: 'email@email.com',
-    telefone: '998263749'
-  },
-  {
-    id: 3,
-    nome: 'Nome Qualquer 3',
-    email: 'email@email.com',
-    telefone: '998263749'
-  },
-  {
-    id: 4,
-    nome: 'Nome Qualquer 4',
-    email: 'email@email.com',
-    telefone: '998263749'
-  },
-  {
-    id: 5,
-    nome: 'Nome Qualquer 5',
-    email: 'email@email.com',
-    telefone: '998263749'
-  },
-  {
-    id: 6,
-    nome: 'Nome Qualquer 6',
-    email: 'email@email.com',
-    telefone: '998263749'
-  },
-  {
-    id: 7,
-    nome: 'Nome Qualquer 7',
-    email: 'email@email.com',
-    telefone: '998263749'
-  },
-  {
-    id: 8,
-    nome: 'Nome Qualquer 8',
-    email: 'email@email.com',
-    telefone: '998263749'
-  },
-  {
-    id: 9,
-    nome: 'Nome Qualquer 9',
-    email: 'email@email.com',
-    telefone: '998263749'
-  },
-];
+interface IContato {
+  Nome: string;
+  Email: String;
+  Telefone: String;
+}
 
 const Home: React.FC = () => {
   const navigation = useNavigation();
+
+  const [contatos, setContatos] = useState([{ 'Nome': String, 'Email': String, 'Telefone': String }])
+
+  useEffect(() => {
+    firebase.database().ref('contatos').on('value', (snapshot) => {
+      setContatos(snapshot.val());
+    });
+  }, []);
 
   const handleDelete = () => {
     Alert.alert(
@@ -97,21 +55,19 @@ const Home: React.FC = () => {
         <Text style={styles.title}>Contatos</Text>
       </View>
 
-      <View style={styles.contatosContainer}>
-        <FlatList
-          data={contatosFake}
-          keyExtractor={(item) => String(item.id)}
-          renderItem={({ item }) => (
+      <ScrollView style={styles.contatosContainer}>
+        {contatos.map(contato => {
+          return (
             <View style={styles.contatoCard}>
               <View style={{ flex: 1, paddingRight: 4 }}>
                 <Text style={styles.nome} numberOfLines={1}>
-                  {item.nome}
+                  {contato.Nome}
                 </Text>
                 <Text style={styles.telefone} numberOfLines={1}>
-                  {item.telefone}
+                  {contato.Telefone}
                 </Text>
                 <Text style={styles.email} numberOfLines={1}>
-                  {item.email}
+                  {contato.Email}
                 </Text>
               </View>
 
@@ -128,10 +84,9 @@ const Home: React.FC = () => {
                 </RectButton>
               </View>
             </View>
-          )}
-          showsVerticalScrollIndicator={false}
-        />
-      </View>
+          );
+        })}
+      </ScrollView>
 
       <RectButton style={styles.fab} onPress={() => navigation.navigate('FormContact')}>
         <Icon name="plus" size={28} color="#f9f9f9" />
