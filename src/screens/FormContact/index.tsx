@@ -12,6 +12,8 @@ import { RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+import firebase from '../../config/firebaseConnection';
+
 import styles from './styles';
 
 const FormContact: React.FC = () => {
@@ -20,6 +22,23 @@ const FormContact: React.FC = () => {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
+
+  const handleCreate = async () => {
+    if (nome !== '' && email !== '' && telefone !== '') {
+      let contatos = firebase.database().ref('contatos');
+      const id = contatos.push().key;
+
+      console.log(id)
+
+      await contatos.child(String(id)).set({
+        Nome: nome,
+        Email: email,
+        Telefone: telefone
+      });
+
+      alert('Novo contato cadastrado!');
+    }
+  };
 
   return (
     <KeyboardAvoidingView
@@ -53,11 +72,14 @@ const FormContact: React.FC = () => {
                 placeholderTextColor="#333333"
                 value={email}
                 onChangeText={text => setEmail(text)}
+                autoCapitalize="none"
+                keyboardType="email-address"
               />
             </View>
             <View style={styles.inputContainer}>
               <Text style={styles.label}>Telefone</Text>
               <TextInput
+                keyboardType="phone-pad"
                 style={styles.input}
                 placeholderTextColor="#333333"
                 value={telefone}
@@ -65,7 +87,7 @@ const FormContact: React.FC = () => {
               />
             </View>
 
-            <RectButton style={styles.button}>
+            <RectButton style={styles.button} onPress={handleCreate}>
               <Text style={styles.buttonText}>Cadastrar</Text>
             </RectButton>
           </View>

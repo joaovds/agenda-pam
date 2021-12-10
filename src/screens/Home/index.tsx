@@ -13,12 +13,6 @@ import firebase from '../../config/firebaseConnection';
 
 import styles from './styles';
 
-interface IContato {
-  Nome: string;
-  Email: String;
-  Telefone: String;
-}
-
 const Home: React.FC = () => {
   const navigation = useNavigation();
 
